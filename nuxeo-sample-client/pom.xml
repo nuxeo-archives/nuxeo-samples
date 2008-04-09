@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.nuxeo.ecm.core</groupId>
+    <artifactId>nuxeo-core-parent</artifactId>
+    <version>1.4.1</version>
+  </parent>
+
+  <artifactId>nuxeo-sample-client</artifactId>
+  <groupId>org.nuxeo.ecm.sample.client</groupId>
+  <version>1.4.1</version>
+  <name>Nuxeo Sample Remote Client</name>
+  <description>Nuxeo ECM: Sample Remote Client</description>
+
+  <properties>
+    <nuxeo.runtime.version>${parent.version}</nuxeo.runtime.version>
+    <nuxeo.common.version>${parent.version}</nuxeo.common.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.nuxeo.ecm.core</groupId>
+      <artifactId>nuxeo-core-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.nuxeo.ecm.core</groupId>
+      <artifactId>nuxeo-core-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.nuxeo.ecm.core</groupId>
+      <artifactId>nuxeo-core-schema</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.nuxeo.runtime</groupId>
+      <artifactId>nuxeo-runtime</artifactId>
+      <version>${nuxeo.runtime.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.nuxeo.runtime</groupId>
+      <artifactId>nuxeo-runtime-osgi</artifactId>
+      <version>${nuxeo.runtime.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.nuxeo.common</groupId>
+      <artifactId>nuxeo-common</artifactId>
+      <version>${nuxeo.common.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>jboss</groupId>
+      <artifactId>jboss-remoting</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jboss</groupId>
+      <artifactId>jboss-common</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jboss</groupId>
+      <artifactId>ejb3</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jboss</groupId>
+      <artifactId>jboss-aop-jdk50</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jboss</groupId>
+      <artifactId>jboss-aspect-jdk50-client</artifactId>
+      <version>1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>jboss</groupId>
+      <artifactId>jbosssx</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jboss</groupId>
+      <artifactId>jnp-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jboss</groupId>
+      <artifactId>jboss-client</artifactId>
+      <version>4.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>jboss</groupId>
+      <artifactId>jboss-j2ee</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jboss</groupId>
+      <artifactId>jboss-transaction-client</artifactId>
+      <version>4.0.4.GA</version>
+    </dependency>
+
+    <dependency>
+      <groupId>concurrent</groupId>
+      <artifactId>concurrent</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.1</version>
+    </dependency>
+    <dependency>      
+      <groupId>org.osgi</groupId>
+      <artifactId>osgi-core</artifactId>
+      <version>4.1</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-nuxeo-plugin</artifactId>
+        <extensions>true</extensions>
+        <executions>
+          <execution>
+            <id>assemble-app</id>
+            <phase>package</phase>
+            <goals>
+              <goal>assembly</goal>
+            </goals>
+            <configuration>
+              <runPreprocessor>false</runPreprocessor>
+              <format>zip</format>
+              <outputDirectory>target</outputDirectory>
+              <targetFile>nuxeo-sample-client-${version}</targetFile>
+              <descriptor>${basedir}/assembly.xml</descriptor>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>nuxeo_release</id>
+      <name>Nuxeo Release</name>
+      <url>
+        http://archiva.nuxeo.org/archiva/repository/nuxeo_release
+      </url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>nuxeo_release</id>
+      <name>Nuxeo Release</name>
+      <url>
+        http://archiva.nuxeo.org/archiva/repository/nuxeo_release
+      </url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
+</project>

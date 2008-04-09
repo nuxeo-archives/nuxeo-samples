@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<assembly>
+
+  <assemble>
+    <set>resources</set>
+    <outputFile>/</outputFile>
+  </assemble>
+
+  <assemble>
+    <set>launcher-classes</set>
+    <set>launcher-libs</set>
+    <outputFile>lib</outputFile>
+  </assemble>
+
+  <assemble>
+    <set>nuxeo-libs</set>
+    <outputFile>app/lib</outputFile>
+  </assemble>
+
+  <assemble>
+    <set>nuxeo-bundles</set>
+    <set>this-bundle</set>
+    <outputFile>app/bundles</outputFile>
+  </assemble>
+
+
+
+  <fileSet id="resources">
+    <directory>src/main/resources</directory>
+    <excludes>
+      <exclude>**/.svn</exclude>
+      <exclude>META-INF</exclude>
+    </excludes>
+  </fileSet>
+
+  <zipEntrySet id="launcher-classes">
+    <artifact>org.nuxeo.runtime:nuxeo-runtime-osgi</artifact>
+    <includes>
+      <include>Launcher.class</include>
+    </includes>
+  </zipEntrySet>
+
+  <artifactSet id="launcher-libs">
+    <import>*</import>
+    <artifacts>
+      <artifact group="log4j" name="log4j" version="1.2.13" />
+    </artifacts>
+    <includes>
+      <artifact name="commons-logging" />
+      <artifact name="nuxeo-runtime-osgi" />
+      <artifact name="nuxeo-common" />
+      <artifact group="org.osgi" />
+    </includes>
+  </artifactSet>
+
+  <artifactSet id="nuxeo-libs">
+    <import>*</import>
+    <includes>
+      <artifact group="jboss" />
+      <artifact group="concurrent" />
+    </includes>
+  </artifactSet>
+
+  <artifactSet id="nuxeo-bundles">
+    <import>*</import>
+    <includes>
+      <artifact name="nuxeo-runtime" />
+      <artifact name="nuxeo-core-api" />
+      <artifact name="nuxeo-core-schema" />
+      <artifact name="nuxeo-core-client" />
+      <artifact name="nuxeo-core-io-api" />
+      <artifact name="nuxeo-core-io" />
+    </includes>
+  </artifactSet>
+
+  <fileSet id="this-bundle">
+    <directory>target</directory>
+    <includes>
+      <include>nuxeo-sample-client-*.jar</include>
+    </includes>
+  </fileSet>
+
+</assembly>
+
