@@ -5,12 +5,12 @@
   <parent>
     <groupId>org.nuxeo.ecm.core</groupId>
     <artifactId>nuxeo-core-parent</artifactId>
-    <version>1.4.1</version>
+    <version>1.4.3-SNAPSHOT</version>
   </parent>
 
   <artifactId>nuxeo-sample-client</artifactId>
   <groupId>org.nuxeo.ecm.sample.client</groupId>
-  <version>1.4.1</version>
+  <version>1.4.3-SNAPSHOT</version>
   <name>Nuxeo Sample Remote Client</name>
   <description>Nuxeo ECM: Sample Remote Client</description>
 
