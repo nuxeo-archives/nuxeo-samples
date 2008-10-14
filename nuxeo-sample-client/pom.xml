@@ -10,7 +10,6 @@
 
   <artifactId>nuxeo-sample-client</artifactId>
   <groupId>org.nuxeo.ecm.sample.client</groupId>
-  <version>1.5-SNAPSHOT</version>
   <name>Nuxeo Sample Remote Client</name>
   <description>Nuxeo ECM: Sample Remote Client</description>
 
