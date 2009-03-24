@@ -8,11 +8,11 @@
   </parent>
 
   <groupId>org.nuxeo</groupId>
-  <artifactId>nuxeo-samples-list</artifactId>
+  <artifactId>nuxeo-samples</artifactId>
   <version>1.5-SNAPSHOT</version>
-  <name>Nuxeo Samples list</name>
+  <name>Nuxeo Samples</name>
   <packaging>pom</packaging>
-  <description>Nuxeo Samples list</description>
+  <description>Nuxeo Samples</description>
 
   <scm>
     <connection>scm:hg:https://hg.nuxeo.org/addons/nuxeo-samples</connection>
