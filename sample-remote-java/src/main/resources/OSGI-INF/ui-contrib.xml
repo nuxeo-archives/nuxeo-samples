@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<component name="org.nuxeo.book.upcoming.ui">
+
+  <extension target="org.nuxeo.ecm.platform.types.TypeService" point="types">
+
+    <type id="Upcoming">
+      <label>Upcoming Event</label>
+      <bigIcon>/icons/upcoming.png</bigIcon>
+      <icon>/icons/upcoming.png</icon>
+      <default-view>view_documents</default-view>
+
+      <!-- solution to exercise at end of lesson is to use two different layouts
+      depending on the mode -->
+      <layouts mode="create">
+        <layout>heading</layout>
+        <layout>upcoming</layout>
+      </layouts>
+      <layouts mode="edit">
+        <layout>heading</layout>
+        <layout>upcoming</layout>
+      </layouts>
+      <layouts mode="view">
+        <layout>heading</layout>
+        <layout>upcoming_readonly</layout>
+      </layouts>
+      <layouts mode="search">
+        <layout>heading</layout>
+        <layout>upcoming_readonly</layout>
+      </layouts>
+    </type>
+
+    <type id="Workspace" coretype="Workspace">
+      <subtypes>
+        <type>Upcoming</type>
+      </subtypes>
+    </type>
+
+    <type id="Folder" coretype="Folder">
+      <subtypes>
+        <type>Upcoming</type>
+      </subtypes>
+    </type>
+
+  </extension>
+</component>
