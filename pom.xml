@@ -4,12 +4,12 @@
   <parent>
     <groupId>org.nuxeo</groupId>
     <artifactId>nuxeo-ecm</artifactId>
-    <version>5.2-SNAPSHOT</version>
+    <version>5.2.0</version>
   </parent>
 
   <groupId>org.nuxeo</groupId>
   <artifactId>nuxeo-samples</artifactId>
-  <version>1.5-SNAPSHOT</version>
+  <version>1.5.0</version>
   <name>Nuxeo Samples</name>
   <packaging>pom</packaging>
   <description>Nuxeo Samples</description>
