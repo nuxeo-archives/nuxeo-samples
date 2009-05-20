@@ -26,6 +26,7 @@ import org.nuxeo.ecm.core.api.security.impl.ACLImpl;
 import org.nuxeo.ecm.core.api.security.impl.ACPImpl;
 import org.nuxeo.ecm.core.client.DefaultLoginHandler;
 import org.nuxeo.ecm.core.client.NuxeoClient;
+import org.nuxeo.ecm.core.client.Launcher;
 import org.nuxeo.ecm.core.storage.sql.coremodel.BinaryTextListener;
 import org.nuxeo.osgi.application.client.NuxeoApp;
 import org.nuxeo.runtime.api.Framework;
