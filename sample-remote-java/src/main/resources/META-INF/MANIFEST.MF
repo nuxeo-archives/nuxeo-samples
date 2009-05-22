@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 1
-Bundle-Name: API Try
-Bundle-SymbolicName: org.nuxeo.apitry;singleton:=true
+Bundle-Name: Sample Remote Java
+Bundle-SymbolicName: org.nuxeo.sample.remote.java;singleton:=true
 Bundle-Version: 0.0.1
 Bundle-Vendor: Nuxeo
 Main-Class: org.nuxeo.ecm.client.test.Launcher

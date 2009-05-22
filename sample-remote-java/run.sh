@@ -18,4 +18,4 @@ for I in $MAIN_JAR
 #OPTS=" -Xdebug -Xrunjdwp:transport=dt_socket,address=127.0.0.1:8788,server=y,suspend=y "
 #OPTS=$OPTS" -Dlog4j.debug -Dlog4j.configuration=log4j.properties "
 
-java $OPTS -cp $CP org.nuxeo.ecm.client.test.Launcher
+java $OPTS -cp $CP org.nuxeo.ecm.core.client.Launcher
