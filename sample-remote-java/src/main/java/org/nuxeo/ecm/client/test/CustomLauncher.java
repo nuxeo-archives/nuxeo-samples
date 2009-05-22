@@ -33,8 +33,9 @@ import org.nuxeo.runtime.api.Framework;
 public class CustomLauncher extends Launcher {
 
     private static final Log log = LogFactory.getLog(BinaryTextListener.class);
-    private static String host = "joyeux";
+    private static String host = "localhost";
     private static String login = "Administrator";
+    private static String filename = "demo.rtf";
 
     /**
      * Create an nuxeo application
@@ -77,7 +78,7 @@ public class CustomLauncher extends Launcher {
             coreSession.save();
 
             //Create the file content
-            f = new File("corrections chapter 7.rtf");
+            f = new File(filename);
             byte[] bytes = new byte[(int)f.length()];
             FileInputStream in = new FileInputStream(f);
             in.read(bytes);
@@ -113,8 +114,10 @@ public class CustomLauncher extends Launcher {
             //Copy the file content of the first result in "tmp.txt"
             Blob b = (Blob)list.get(0).getPropertyValue("file:content");
             if (b != null){
-                FileOutputStream fos = new FileOutputStream(new File("tmp.txt"));
+                File tmp = File.createTempFile(CustomLauncher.class.toString(), ".tmp");
+                FileOutputStream fos = new FileOutputStream(tmp);
                 FileUtils.copy(b.getStream(), fos);
+                tmp.deleteOnExit();
             }
 
             //Close the application
