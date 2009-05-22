@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<component name="org.nuxeo.book.upcoming.schema">
-  <extension target="org.nuxeo.ecm.core.schema.TypeService" point="schema">
-    <schema name="upcoming" src="schemas/upcoming.xsd" prefix="up" />
-  </extension>
-</component>
