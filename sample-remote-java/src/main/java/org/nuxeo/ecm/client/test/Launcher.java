@@ -65,7 +65,7 @@ public class Launcher implements Runnable {
     }
 
     /**
-     * Create an nuxeo application
+     * Create a nuxeo application
      */
     protected static NuxeoApp setup() throws Exception {
         File home = Launcher.setProperties();
