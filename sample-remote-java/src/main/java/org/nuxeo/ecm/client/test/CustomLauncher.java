@@ -34,8 +34,11 @@ import org.nuxeo.runtime.api.Framework;
 public class CustomLauncher extends Launcher {
 
     private static final Log log = LogFactory.getLog(BinaryTextListener.class);
-    private static String host = "joyeux";
+
+    //Should be written in external (properties file)
+    private static String host = "localhost";
     private static String login = "Administrator";
+    private static String password = "Administrator";
 
     /**
      * Create an nuxeo application
@@ -56,7 +59,7 @@ public class CustomLauncher extends Launcher {
         try {
 
             //Connection to "local" nuxeo after to have launching the server
-            client.setLoginHandler(new DefaultLoginHandler(login, login));
+            client.setLoginHandler(new DefaultLoginHandler(login, password));
             client.connect(host, 62474);
             repo = client.openRepository();
             CoreSession coreSession = repo.getSession();
