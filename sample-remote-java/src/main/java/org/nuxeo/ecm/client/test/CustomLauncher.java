@@ -2,11 +2,19 @@ package org.nuxeo.ecm.client.test;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Method;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Properties;
 
+import org.nuxeo.ecm.core.client.Launcher;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.nuxeo.common.utils.FileUtils;
@@ -26,7 +34,6 @@ import org.nuxeo.ecm.core.api.security.impl.ACLImpl;
 import org.nuxeo.ecm.core.api.security.impl.ACPImpl;
 import org.nuxeo.ecm.core.client.DefaultLoginHandler;
 import org.nuxeo.ecm.core.client.NuxeoClient;
-import org.nuxeo.ecm.core.client.Launcher;
 import org.nuxeo.ecm.core.storage.sql.coremodel.BinaryTextListener;
 import org.nuxeo.osgi.application.client.NuxeoApp;
 import org.nuxeo.runtime.api.Framework;
@@ -36,9 +43,10 @@ public class CustomLauncher extends Launcher {
     private static final Log log = LogFactory.getLog(BinaryTextListener.class);
 
     //Should be written in external (properties file)
-    private static String host = "localhost";
-    private static String login = "Administrator";
-    private static String password = "Administrator";
+    private static String host;
+    private static String username;
+    private static String password;
+    private static String filename;
 
     /**
      * Create an nuxeo application
@@ -59,7 +67,7 @@ public class CustomLauncher extends Launcher {
         try {
 
             //Connection to "local" nuxeo after to have launching the server
-            client.setLoginHandler(new DefaultLoginHandler(login, password));
+            client.setLoginHandler(new DefaultLoginHandler(username, password));
             client.connect(host, 62474);
             repo = client.openRepository();
             CoreSession coreSession = repo.getSession();
@@ -81,7 +89,7 @@ public class CustomLauncher extends Launcher {
             coreSession.save();
 
             //Create the file content
-            f = new File("corrections chapter 7.rtf");
+            f = new File(filename);
             byte[] bytes = new byte[(int)f.length()];
             FileInputStream in = new FileInputStream(f);
             in.read(bytes);
@@ -144,5 +152,94 @@ public class CustomLauncher extends Launcher {
 
        repo.setACP((DocumentRef)file.getParentRef(), acp, overwrite);
    }
+
+    private static String getProperty(Properties props, String propName, String defaultValue) {
+        String prop = props.getProperty(propName);
+        System.out.println("------------------------------------------------" + prop);
+        if (prop == null && defaultValue == null) {
+            throw new IllegalArgumentException("Missing configuration property " + propName);
+        }
+        return prop;
+    }
+
+    private static void configure(Properties props) {
+        host = getProperty(props, "org.nuxeo.ecm.client.test.host", "127.0.0.1");
+        username = getProperty(props, "org.nuxeo.ecm.client.test.username", "Administrator");
+        password = getProperty(props, "org.nuxeo.ecm.client.test.password", "Administrator");
+        filename = getProperty(props, "org.nuxeo.ecm.client.test.filename", "demo.rtf");
+    }
+
+    private static void configuration(String[] args) throws IOException{
+        String configFileName = "";
+        if (args.length == 0) {
+            configFileName = "customLauncher.properties";
+        }
+        else {
+            configFileName = args[0];
+        }
+
+        File configFile = null;
+        // try to find it in classpath
+        URL cfgFileURL = Thread.currentThread().getContextClassLoader().getResource(configFileName);
+        if (cfgFileURL != null) {
+            String filePath = cfgFileURL.getFile();
+            configFile = new File(filePath);
+        }
+        else {
+            // try to find it in current dir
+            configFile = new File(configFileName);
+        }
+
+        Properties props = new Properties();
+        InputStream is = null;
+        try {
+            is = new FileInputStream(configFileName);
+            props.load(is);
+            configure(props);
+        }
+        catch (FileNotFoundException e) {
+            log.error(e, e);
+        }
+        catch (IOException e) {
+            log.error(e, e);
+        }
+        finally {
+            is.close();
+        }
+    }
+
+    /**
+     * Launch application
+     * @param args
+     * @throws Exception
+     */
+    public static void main(String[] args) throws Exception {
+        configuration(args);
+        NuxeoApp app = setup();
+        Collection<File> bundles = getBundles();
+        app.start();
+
+        //Deploy bundles if it doesn't exist
+        if (bundles != null) {
+            app.deployBundles(bundles);
+        }
+
+        //Load application
+        ClassLoader cl = app.getLoader();
+        ClassLoader oldcl = Thread.currentThread().getContextClassLoader();
+        Thread.currentThread().setContextClassLoader(cl);
+        try {
+            String main = System.getProperty("nuxeo.runner");
+            if (main == null) {
+                throw new Error("No runnable specified");
+            }
+            Class<?> mc = app.getLoader().loadClass(main);
+            Method m = mc.getMethod("run");
+            m.invoke(mc.newInstance());
+        } finally {
+            Thread.currentThread().setContextClassLoader(oldcl);
+            app.shutdown();
+        }
+    }
 
 }
