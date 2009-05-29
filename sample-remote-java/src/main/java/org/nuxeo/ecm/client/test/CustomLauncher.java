@@ -155,7 +155,6 @@ public class CustomLauncher extends Launcher {
 
     private static String getProperty(Properties props, String propName, String defaultValue) {
         String prop = props.getProperty(propName);
-        System.out.println("------------------------------------------------" + prop);
         if (prop == null && defaultValue == null) {
             throw new IllegalArgumentException("Missing configuration property " + propName);
         }
