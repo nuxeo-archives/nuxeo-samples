@@ -127,7 +127,7 @@
                 <artifactItem>
                   <groupId>org.nuxeo.ecm.platform</groupId>
                   <artifactId>nuxeo-platform-ui-web</artifactId>
-                  <version>5.2.0</version>
+                  <version>${nuxeo.platform.version}</version>
                 </artifactItem>
                 <artifactItem>
                   <groupId>commons-logging</groupId>
