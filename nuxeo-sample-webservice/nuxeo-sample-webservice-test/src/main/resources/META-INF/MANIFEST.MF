@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-Vendor: Nuxeo
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-Version: 5.5-SNAPSHOT
+Bundle-Name: nuxeo-sample-webservice-test
+Nuxeo-Component: OSGI-INF/extensions/service-ws-client.xml,
+ OSGI-INF/extensions/contrib-ws-client.xml,
+ OSGI-INF/extensions/org.nuxeo.ecm.samples.ws.test.WSClientActionBean.xml,
+ OSGI-INF/extensions/org.nuxeo.ecm.samples.ws.test.WSServerActionBean.xml
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: nuxeo-sample-webservice-test
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+

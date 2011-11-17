@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<component name="org.nuxeo.ecm.samples.ws.test.WSServerActionBean">
+
+  <extension target="org.nuxeo.ecm.platform.actions.ActionService"
+    point="actions">
+
+    <action id="org.nuxeo.ecm.samples.ws.test.WSServerActionBean" link="#{wSServerAction.doGet}"
+      order="400" label="label.org.nuxeo.ecm.samples.ws.test.WSServerActionBean"
+      icon="/icons/org.nuxeo.ecm.samples.ws.test.WSServerActionBean-action.png">
+      <category>SUBVIEW_UPPER_LIST</category>
+      <filter-id>org.nuxeo.ecm.samples.ws.test.WSServerActionBean</filter-id>
+    </action>
+  </extension>
+
+  <extension target="org.nuxeo.ecm.platform.actions.ActionService"
+    point="filters">
+
+    <filter id="org.nuxeo.ecm.samples.ws.test.WSServerActionBean">
+      <rule grant="true">
+        <condition>#{wSServerAction.accept()}</condition>
+      </rule>
+    </filter>
+
+  </extension>
+
+</component>

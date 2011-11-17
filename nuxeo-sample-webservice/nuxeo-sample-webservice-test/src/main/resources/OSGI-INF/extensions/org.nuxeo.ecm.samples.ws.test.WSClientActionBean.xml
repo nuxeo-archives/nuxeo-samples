@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<component name="org.nuxeo.ecm.samples.ws.test.WSClientActionBean">
+
+  <extension target="org.nuxeo.ecm.platform.actions.ActionService"
+    point="actions">
+
+    <action id="testWeatherForecastWS" link="#{wSClientAction.testWeatherForecastWS}"
+      order="200" label="label.org.nuxeo.ecm.samples.ws.test.testWeatherForecastWS"
+      icon="/icons/org.nuxeo.ecm.samples.ws.test.WSClientActionBean-action.png">
+      <category>SUBVIEW_UPPER_LIST</category>
+      <filter-id>org.nuxeo.ecm.samples.ws.test.WSClientActionBean
+      </filter-id>
+    </action>
+
+    <action id="testNuxeoRemotingtWS" link="#{wSClientAction.testNuxeoRemotingWS}"
+      order="300" label="label.org.nuxeo.ecm.samples.ws.test.testNuxeoRemotingWS"
+      icon="/icons/org.nuxeo.ecm.samples.ws.test.WSClientActionBean-action.png">
+      <category>SUBVIEW_UPPER_LIST</category>
+      <filter-id>org.nuxeo.ecm.samples.ws.test.WSClientActionBean
+      </filter-id>
+    </action>
+
+  </extension>
+
+  <extension target="org.nuxeo.ecm.platform.actions.ActionService"
+    point="filters">
+
+    <filter id="org.nuxeo.ecm.samples.ws.test.WSClientActionBean">
+      <rule grant="true">
+        <condition>#{wSClientAction.accept()}</condition>
+      </rule>
+    </filter>
+
+  </extension>
+
+</component>

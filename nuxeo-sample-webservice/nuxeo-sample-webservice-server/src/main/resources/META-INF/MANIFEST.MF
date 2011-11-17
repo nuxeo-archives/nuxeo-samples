@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-Vendor: Nuxeo
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-Version: 5.5-SNAPSHOT
+Bundle-Name: nuxeo-sample-webservice-server
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: nuxeo-sample-webservice-server
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+

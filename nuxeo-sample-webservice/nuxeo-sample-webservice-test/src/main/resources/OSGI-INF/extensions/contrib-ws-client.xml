@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<component name="org.nuxeo.ecm.samples.ws.test.WSClientContrib">
+
+  <!-- Weather forecast webservice client -->
+  <extension target="org.nuxeo.ecm.samples.ws.test.webServiceClient"
+    point="WSClient">
+    <WSClientDescriptor id="WeatherForecastService">
+      <wsdlUrl>http://www.restfulwebservices.net/wcf/WeatherForecastService.svc?wsdl
+      </wsdlUrl>
+      <namespaceURI>http://www.restfulwebservices.net/ServiceContracts/2008/01
+      </namespaceURI>
+      <localPart>WeatherForecastService</localPart>
+    </WSClientDescriptor>
+  </extension>
+
+  <!-- Nuxeo remoting webservice client -->
+  <extension target="org.nuxeo.ecm.samples.ws.test.webServiceClient"
+    point="WSClient">
+    <WSClientDescriptor id="NuxeoRemotingService">
+      <wsdlUrl>http://localhost:8080/nuxeo/webservices/nuxeoremoting?wsdl
+      </wsdlUrl>
+      <namespaceURI>http://ws.platform.ecm.nuxeo.org/
+      </namespaceURI>
+      <localPart>NuxeoRemotingService</localPart>
+    </WSClientDescriptor>
+  </extension>
+
+  <!-- Nuxeo sample webservice client -->
+  <extension target="org.nuxeo.ecm.samples.ws.test.webServiceClient"
+    point="WSClient">
+    <WSClientDescriptor id="NuxeoSampleWebService">
+      <wsdlUrl>http://localhost:8080/nuxeo/webservices/nuxeosample?wsdl
+      </wsdlUrl>
+      <namespaceURI>http://server.ws.samples.ecm.nuxeo.org/
+      </namespaceURI>
+      <localPart>NuxeoSampleWebService</localPart>
+    </WSClientDescriptor>
+  </extension>
+
+
+
+</component>

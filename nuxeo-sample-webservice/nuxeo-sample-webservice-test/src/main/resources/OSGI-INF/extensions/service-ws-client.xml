@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<component name="org.nuxeo.ecm.samples.ws.test.webServiceClient">
+
+  <service>
+    <provide interface="org.nuxeo.ecm.samples.ws.client.WSClientService" />
+  </service>
+
+  <implementation class="org.nuxeo.ecm.samples.ws.client.WSClientComponent" />
+
+  <extension-point name="WSClient">
+    <documentation>
+      <code>
+        <WSClientDescriptor id="myId">
+          <wsdlUrl>http://localhost:8080/nuxeo/webservices/nuxeoremoting?wsdl
+          </wsdlUrl>
+          <namespaceURI>http://ws.platform.ecm.nuxeo.org/
+          </namespaceURI>
+          <localPart>NuxeoRemotingService</localPart>
+        </WSClientDescriptor>
+      </code>
+    </documentation>
+    <object class="org.nuxeo.ecm.samples.ws.client.WSClientDescriptor" />
+  </extension-point>
+
+</component>
