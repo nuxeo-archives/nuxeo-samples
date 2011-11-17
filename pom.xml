@@ -23,6 +23,7 @@
   <modules>
     <!-- TODO: upgrade these modules to 5.5 -->
     <!-- <module>nuxeo-sample-client</module> <module>sample-remote-java</module> -->
+    <module>nuxeo-sample-webservice</module>
   </modules>
 
   <repositories>
