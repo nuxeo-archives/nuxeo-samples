@@ -7,4 +7,4 @@ Bundle-Name: nuxeo-sample-webservice-server
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: nuxeo-sample-webservice-server
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-
+Nuxeo-Component: OSGI-INF/sample-ws-contrib.xml

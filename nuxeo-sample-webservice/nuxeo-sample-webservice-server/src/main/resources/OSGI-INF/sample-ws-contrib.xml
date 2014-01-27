@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<component name="org.nuxeo.ecm.sample.ws.server.contrib">
+
+  <extension target="org.nuxeo.ecm.platform.ws.WSEndpointManager" point="endpoint">
+    <endpoint name="nuxeosample"
+      implementor="org.nuxeo.ecm.samples.ws.server.NuxeoSampleWSImpl"
+      address="/nuxeosample" />
+  </extension>
+
+</component>
